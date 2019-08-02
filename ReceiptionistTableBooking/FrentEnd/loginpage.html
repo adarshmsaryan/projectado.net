@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGIN PAGE</title>
+    <!-- BootstrapCDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- script is used here for normal validation -->
+    <script>
+        function checkLogin() {
+            var user = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var data = "userName=" + user + "&password=" + password;
+
+            var request = new XMLHttpRequest();
+
+            request.open("POST", "http://localhost:53105/api/Test/valid", true);
+            //  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+            request.send(JSON.stringify(data));
+
+            if (request.status === 200 && request.readyState==4) {
+                window.location("tableandordersummary.html");
+            } //else {
+                //var messageSpan = document.getElementById("response");
+
+               // var responseJson = JSON.parse(request.responseText);
+               // messageSpan.innerHTML = "Your password of " + responseJson["password"] + " was incorrect.";
+           // }
+        }
+    </script>
+   <!---- <script>
+        // login funnction is written here
+    function login()
+    {
+        if(document.getElementById("username").value=="adarsh" && document.getElementById("password").value=="123")
+        {
+            // alert("Login success!!");
+            document.getElementsByTagName("p")[0].innerHTML="<font color='green'>Login Successsful!!</font>";
+            window.location="tableandordersummary.html";
+
+
+        }
+        else{
+            // alert("login failed!!!");
+            document.getElementsByTagName("p")[0].innerHTML="<font color='red'>Password or Username is wrong</font>";
+        }
+    }
+
+
+    </script>-->
+</head>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<center>
+    <body background="C:\Users\Adarsha.MS\Desktop\project\image1.jpg">
+        <!-- <body background="C:\Users\Adarsha.MS\Desktop\project\image5.jpg"> -->
+
+        <B><font color="greenyellow" size="50">Receptionist Login Page</font></B>
+        <div>
+            <fieldset>
+                <legend><b><font color="magenta" size="6">ReceiptionistLogin</font></b></legend>
+                <table>
+                    <br>
+                    <br>
+                    <font color="blue" size="5"> Username:</font>
+                    <input type="text" id="username">
+                    <br>
+                    <br>
+                    <font color="blue" size="5"> Password:</font>
+                    <input type="password" id="password">
+                    <br>
+                    <br>
+                   <!----<input type="button" id="submit" value="LOGIN" style onclick="login()">-->
+                    <input type="button" id="submit" value="LOGIN"  onclick="checkLogin()">
+                    <br>
+                    <br>
+                    <p id="response">
+
+                    </p>
+                </table>
+            </fieldset>
+            </table>
+        </div>
+
+
+
+    </body>
+</center>
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

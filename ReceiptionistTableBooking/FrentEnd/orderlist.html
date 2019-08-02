@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Available Table List</title>
+    <script>
+     let xhr = new XMLHttpRequest();
+     xhr.addEventListener("readystatechange", xhrHandler);
+     //enter the database details
+     xhr.open("get", "./data.json");
+     function xhrHandler(){
+                console.log(xhr.readyState);
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    console.log(xhr.responseText);
+                    // herolist = JSON.parse(xhr.responseText).herolist;
+                    // console.log(herolist.length);
+                   for(let i = 0; i < herolist.length; i++){
+                    // document.querySelector("textarea").value += herolist[i].title+"\n";
+                       document.querySelector("li").innerHTML += document
+                       .querySelector("#htemp")
+                       .innerHTML
+                       .replace("{customerid}", herolist[i].title)
+                       .replace("{name}", i + 1)
+                       .replace("{phonenumber}", herolist[i].firstname + ' ' + herolist[i].lastname)
+                       .replace("{date}", herolist[i].poster)
+                       .replace("{starttime}", herolist[i].ticketprice)
+                       .replace("{endtime}", herolist[i].ticketprice)
+                       .replace("{status}", herolist[i].ticketprice);
+
+                }
+                }
+            }
+            document.addEventListener("DOMContentLoaded", function(){
+                document.querySelector("button").addEventListener("click", clickHandler)
+            });
+            function clickHandler(){
+                xhr.send();
+            }
+
+
+    </script>
+</head>
+<body>
+    <button>Get Data</button>
+    <hr>
+    <table border="2px solid black">
+        <thead>
+            <tr>
+                <th>customer ID #</th>
+                <th>Name</th>
+                <th>Phonenumber</th>
+                <th>Date</th>
+                <th>start Time</th>
+                <th>End Time</th>
+                <th>Table No</th>
+                <th>status</th>
+
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <template id="htemp">
+        <tr>
+            <td>{customerid}</td>
+            <td>{name}</td>
+            <td>{phonenumber}</td>
+            <td>{date}</td>
+            <td>{starttime}</td>
+            <td>{endtime}</td>
+            <td>{status}</td>
+
+        </tr>
+    </template>
+</body>
+</html>
